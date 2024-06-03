@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .caret {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* 伪类元素 */
+        .caret::before {
+            content: "\25B6";
+            color: black;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .caret-down::before {
+            transform: rotate(90deg);
+        }
+
+        .nested {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Tree Structure</h2>
+    <ul id="myTree">
+    </ul>
+    <script>
+        const list = [
+            {
+                "arrlist": [
+                    {
+                        "id": 1,
+                        "name": "张三"
+                    },
+                    {
+                        "id": 2,
+                        "name": "王五"
+                    },
+                    {
+                        "id": 3,
+                        "name": "老九"
+                    }
+                ],
+                "erji": [
+                    {
+                        "id": 1,
+                        "name": "李四"
+                    },
+                ]
+            },
+            {
+                "arrlist": [
+                    {
+                        "id": 4,
+                        "name": "钱六"
+                    },
+                    {
+                        "id": 5,
+                        "name": "孙七"
+                    }
+                ],
+                "erji": [
+                    {
+                        "id": 2,
+                        "name": "周八"
+                    }
+                ]
+            }
+        ];
+
+        function createTree(data, parent) {
+            data.forEach(group => {
+                console.log(group, '遍历的')
+                // 追加标签
+                const groupLi = document.createElement("li");
+                const groupSpan = document.createElement("span");
+        
+            });
+
+
+        }
+        createTree(list)
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    html,
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .counter {
+        width: 400px;
+        height: 300px;
+        border: 1px solid red;
+    }
+</style>
+
+
+<body>
+    <div class="counter">
+        <!-- <div class="lsit">
+            <ul>
+                <li></li>
+            </ul>
+        </div> -->
+        <div class="jiu">
+
+        </div>
+    </div>
+
+    <script>
+
+        const list = [
+            {
+
+                "arrlist": [
+                    {
+                        "id": 1,
+                        "name": "张三"
+                    },
+                    {
+                        "id": 2,
+                        "name": "王五"
+                    },
+                    {
+                        "id": 3,
+                        "name": "老九"
+                    }
+                ],
+                "erji": [
+                    {
+                        "id": 1,
+                        "name": "李四"
+                    },
+                ]
+            },
+        ]
+        const listarr = document.querySelector('.lsit')
+        const str = ''
+
+        list.forEach((item) => {
+            // console.log(item.arrlist)
+            // console.log(item[1])
+            // const {name} = item.arrlist[0]
+            // console.log(name)
+            let strlist = ''
+            for (let i = 0; i < item.arrlist.length; i++) {
+                console.log(item.arrlist[i])
+                strlist = `
+                    <ul>
+                     <li>${item.arrlist[i].name}</li>     
+                    </ul>
+                `
+                document.querySelector('.jiu').innerHTML = strlist
+            }
+
+            // const jiu = document.querySelector('.jiu').innerHTML = `<ul>
+            //              <li>${item.arrlist[0].name}</li>
+            //     </ul>`  // 三个对象 
+
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

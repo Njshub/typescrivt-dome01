@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tree Structure</title>
+<style>
+    ul {
+        list-style-type: none;
+        padding-left: 20px;
+    }
+    .caret {
+        cursor: pointer;
+        user-select: none;
+    }
+    .caret::before {
+        content: "\25B6";
+        color: black;
+        display: inline-block;
+        margin-right: 6px;
+    }
+    .caret-down::before {
+        transform: rotate(90deg);
+    }
+    .nested {
+        display: none;
+    }
+    .active {
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+<h2>Tree Structure</h2>
+
+<ul id="myTree">
+</ul>
+
+<script>
+    const list = [
+        {
+            "arrlist": [
+                {
+                    "id": 1,
+                    "name": "张三"
+                },
+                {
+                    "id": 2,
+                    "name": "王五"
+                },
+                {
+                    "id": 3,
+                    "name": "老九"
+                }
+            ],
+            "erji": [
+                {
+                    "id": 1,
+                    "name": "李四"
+                },
+            ]
+        },
+        {
+            "arrlist": [
+                {
+                    "id": 4,
+                    "name": "钱六"
+                },
+                {
+                    "id": 5,
+                    "name": "孙七"
+                }
+            ],
+            "erji": [
+                {
+                    "id": 2,
+                    "name": "周八"
+                }
+            ]
+        }
+    ];
+    //    函数
+    function createTree(data, parent) {
+        data.forEach(group => {
+            // 追加一个li
+            const groupLi = document.createElement("li");
+            const groupSpan = document.createElement("span");
+            // 添加一个属性
+            groupSpan.className = "caret";
+            groupSpan.textContent = "Group";
+            groupSpan.addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+            });
+            groupLi.appendChild(groupSpan);
+            const groupUl = document.createElement("ul");
+            groupUl.className = "nested";
+            groupLi.appendChild(groupUl);
+            parent.appendChild(groupLi);
+
+            for (const key in group) {
+                if (group.hasOwnProperty(key) && Array.isArray(group[key])) {
+                    const subList = group[key];
+                    subList.forEach(item => {
+                        const li = document.createElement("li");
+                        li.textContent = item.name || "Item";
+                        groupUl.appendChild(li);
+                    });
+                }
+            }
+        });
+    }
+
+    createTree(list, document.getElementById("myTree"));
+</script>
+
+</body>
+</html>
